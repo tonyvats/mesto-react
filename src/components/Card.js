@@ -2,6 +2,8 @@ import React from 'react';
 
 function Card({ card, onCardClick }) {
 
+    
+
     function handleClick() {
         onCardClick(card);
     } 
@@ -17,8 +19,7 @@ function Card({ card, onCardClick }) {
                     <span className="photo-grid__like-count">{card.likes.length}</span>
                 </div>
             </div> 
-        </div>
-         
+        </div>    
     );
 }
 

@@ -15,26 +15,12 @@ function Main({ onEditAvatar, onEditProfile, onAddPlace, onCardClick }) {
         Promise.all([api.getUserInfoFromServer()])
           .then(res => {
             setUserAvatar(res[0].avatar);
-          })
-          .catch((err) => console.error(err));
-      }, []);
-
-    React.useEffect(() => {
-        Promise.all([api.getUserInfoFromServer()])
-          .then(res => {
             setUserName(res[0].name);
-          })
-          .catch((err) => console.error(err));
-        }, []);
-
-    React.useEffect(() => {
-        Promise.all([api.getUserInfoFromServer()])
-          .then(res => {
             setUserDescription(res[0].about);
           })
           .catch((err) => console.error(err));
-        }, []);    
-
+      }, []);
+   
     React.useEffect(() => {
         Promise.all([api.getCardsInformation()])
           .then(res => {
@@ -54,7 +40,7 @@ function Main({ onEditAvatar, onEditProfile, onAddPlace, onCardClick }) {
                     <p className="profile__subtitle">{userDescription}</p>
                     <button type="button" className="profile__edit-btn" onClick={onEditProfile}></button>
                 </div>
-                <button type="button" className="profile__add-btn" onClick={onAddPlace}></button>
+                <button type="button" className="profile__add-btn" onClick={onAddPlace} />
             </section>
             <section className="photo-grid">
                 { 

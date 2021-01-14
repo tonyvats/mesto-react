@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import '../index.js';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
@@ -11,8 +11,8 @@ function App() {
     const [isEditAvatarPopupOpen, setIsOpenPopupAvatar] = React.useState(false);
     const [isEditProfilePopupOpen, setIsOpenPopupProfile] = React.useState(false);
     const [isAddPlacePopupOpen, setIsOpenPopupPlace] = React.useState(false);
-    const [selectedCard, setSelectedCard] = React.useState(null);
-
+    const [selectedCard, setSelectedCard] = React.useState(false);
+    
 
     function handleEditAvatarClick() {
         setIsOpenPopupAvatar(true);
@@ -34,7 +34,7 @@ function App() {
         setIsOpenPopupAvatar(false);
         setIsOpenPopupProfile(false);
         setIsOpenPopupPlace(false);
-        setSelectedCard(null);
+        setSelectedCard(false);
     }
 
     return (
