@@ -2,7 +2,7 @@ import React from 'react';
 
 function Card({ card, onCardClick }) {
 
-    
+    // console.log(card);    
 
     function handleClick() {
         onCardClick(card);
