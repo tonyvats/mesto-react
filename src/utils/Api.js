@@ -4,12 +4,12 @@ class Api {
         this._headers = config.headers;
     }
 
-    editProfileAvatar(data) {
+    editProfileAvatar(avatar) {
         return fetch(`${this._url}${'users/me/avatar'}`, {
             method: "PATCH",
             headers: this._headers, 
             body: JSON.stringify({
-                avatar: data.avatar
+                avatar: avatar
             })       
         }).then((res) => {
             if (res.ok) {
@@ -44,13 +44,13 @@ class Api {
         })
     }
 
-    setUserInfoOnServer(data) {
+    setUserInfoOnServer(name, about) {
         return fetch(`${this._url}${'users/me'}`, {
             method: "PATCH",
             headers: this._headers,
             body: JSON.stringify({
-                name: data.nameInput,
-                about: data.jobInput
+                name: name,
+                about: about
             })       
         }).then((res) => {
             if (res.ok) {
@@ -74,13 +74,13 @@ class Api {
         })
     }
 
-    addCards(data) {
+    addCards(name, link) {
         return fetch(`${this._url}${'cards'}`, {
             method: "POST",
             headers: this._headers,
             body: JSON.stringify({
-                name: data.name,
-                link: data.link
+                name: name,
+                link: link
             })       
         }).then((res) => {
             if (res.ok) {
@@ -103,27 +103,14 @@ class Api {
     }
 
 
-    makeLikeCard(cardId) {
+    changeLikeCardStatus(cardId, like) {
         return fetch(`${this._url}${'cards/likes/'}${cardId}`, {
-            method: "PUT",
+            method: like ? "PUT" : "DELETE",
             headers: this._headers      
         }).then((res) => {
             if (res.ok) {
                 return res.json();
             }
-            return Promise.reject(`Ошибка: ${res.status}`);
-        })
-    }
-
-    removeLikeCard(cardId) {
-        return fetch(`${this._url}${'cards/likes/'}${cardId}`, {
-            method: "DELETE",
-            headers: this._headers      
-        }).then((res) => {
-            if (res.ok) {
-                return res.json();
-            }
-            
             return Promise.reject(`Ошибка: ${res.status}`);
         })
     }
