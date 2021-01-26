@@ -19,15 +19,16 @@ function App() {
     const [imageData, setImageData] = React.useState(null)
     
     const [cards, setCards] = React.useState([])
-    const [currentUser,  setCurrentUser] = React.useState("");   
-    
+    const [currentUser,  setCurrentUser] = React.useState(""); 
+        
     React.useEffect(() => {
         Promise.all([api.getUserInfoFromServer(), api.getCardsInformation()])
-          .then(res => {
-            setCurrentUser(res[0]);
-            setCards(res[1]);
-          })
-          .catch((err) => console.error(err));
+            .then(res => {
+                console.log(res)
+                setCurrentUser(res[0]);
+                setCards(res[1]);
+            })
+            .catch((err) => console.error(err));
       }, []);
 
     function handleEditAvatarClick() {
@@ -70,18 +71,19 @@ function App() {
             .then(res => {
                 setCurrentUser(res);
                 closeAllPopups();
+                closeAllPopups()
         })
         .catch((err) => console.error(err))
-        .finally(() => closeAllPopups());
     }
 
     function handleUpdateAvatar(userData) {
         api.editProfileAvatar(userData.avatar)
             .then(res => {
                 setCurrentUser(res);
+                closeAllPopups()
         })
         .catch((err) => console.error(err))
-        .finally(() => closeAllPopups());
+
     }
 
     function handleAddPlaceSubmit(cardData) {
@@ -90,11 +92,10 @@ function App() {
             .then(card => {
                 console.log(cards)
                 setCards([card, ...cards]);
+                closeAllPopups()
         })
         .catch((err) => console.error(err))
-        .finally(() => closeAllPopups());
     }
-    
 
     function handleCardClick(card) {        
         setSelectedCard(true);

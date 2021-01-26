@@ -34,7 +34,7 @@ function Card({ card, onCardClick, onCardLike, onDeleteCard }) {
     return (
         <div className="photo-grid__item">
         <button type="button" className={cardDeleteButtonClassName} onClick={handleDeleteClick}></button>
-        <img className="photo-grid__image" src={card.link} alt="фото" onClick={handleCardClick} />
+        <img className="photo-grid__image" src={card.link} alt={card.name} onClick={handleCardClick} />
             <div className="photo-grid__rectangle">
                 <h2 className="photo-grid__title">{card.name}</h2>
                 <div className="photo-grid__like-place">
