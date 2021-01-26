@@ -24,7 +24,6 @@ function EditProfilePopup({ isOpen, onClose, onUpdateUser }) {
         onUpdateUser({ 
             name: name, 
             about: description });
-        // console.log({name, description});
     }
 
     function handleChangeName(e) {
